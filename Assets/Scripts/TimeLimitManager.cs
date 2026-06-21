@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 public class TimeLimitManager : MonoBehaviour
 {
     [SerializeField] private TMP_Text timeText;
-    [SerializeField] private float timeLimit = 60f;
+    [SerializeField] private float timeLimit = 180f;
     [SerializeField] private GameObject timeUpPanel;
 
     private float remainingTime;

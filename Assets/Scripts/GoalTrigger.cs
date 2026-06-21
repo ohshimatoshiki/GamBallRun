@@ -24,15 +24,15 @@ public class GoalTrigger : MonoBehaviour
 
             timeText.text = "Time: " + clearTime.ToString("F2");
 
-            if (clearTime <= 50f)
+            if (clearTime <= 40f)
             {
                 rankText.text = "Rank: S";
             }
-            else if (clearTime <= 90f)
+            else if (clearTime <= 60f)
             {
                 rankText.text = "Rank: A";
             }
-            else if (clearTime <= 120f)
+            else if (clearTime <= 90f)
             {
                 rankText.text = "Rank: B";
             }
