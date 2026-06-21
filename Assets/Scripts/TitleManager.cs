@@ -12,6 +12,19 @@ public class TitleManager : MonoBehaviour
         ShowTitle();
     }
 
+    public void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StartGame();
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            QuitGame();
+        }        
+    }
+
     public void StartGame()
     {
         Time.timeScale = 1f;
