@@ -1,15 +1,14 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GoalTrigger : MonoBehaviour
 {
-    public GameObject goalText;
+    [SerializeField] private GameObject resultPanel;
+    [SerializeField] private TextMeshProUGUI timeText;
+    [SerializeField] private TextMeshProUGUI rankText;
 
     private bool isGoal = false;
-
-    void Start()
-    {
-        goalText.SetActive(false); // 最初は非表示
-    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -18,9 +17,43 @@ public class GoalTrigger : MonoBehaviour
         if (other.CompareTag("Ball"))
         {
             isGoal = true;
-            goalText.SetActive(true); // GOAL!を表示
 
-            Time.timeScale = 0f; // 停止する
+            float clearTime = Time.timeSinceLevelLoad;
+
+            resultPanel.SetActive(true);
+
+            timeText.text = "Time: " + clearTime.ToString("F2");
+
+            if (clearTime <= 50f)
+            {
+                rankText.text = "Rank: S";
+            }
+            else if (clearTime <= 90f)
+            {
+                rankText.text = "Rank: A";
+            }
+            else if (clearTime <= 120f)
+            {
+                rankText.text = "Rank: B";
+            }
+            else
+            {
+                rankText.text = "Rank: C";
+            }
+
+            Time.timeScale = 0f;
         }
+    }
+
+    public void Replay()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void GoTitle()
+    {
+        Time.timeScale = 1f;
+        SceneManager.LoadScene("Title");
     }
 }
